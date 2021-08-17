@@ -1,0 +1,20 @@
+/*
+table {
+    display: block;
+    margin: 0 auto;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+ */
+
+.my-custom-scrollbar {
+    position: relative;
+    overflow: auto;
+}
+.table-wrapper-scroll-y {
+}
+
+table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
