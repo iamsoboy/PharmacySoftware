@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "440c214c2e3212750343039718947b18",
+    "content-hash": "82367453dcec25832e2c179d9d9ae16d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1706,6 +1706,72 @@
                 "serialize"
             ],
             "time": "2021-04-09T13:42:10+00:00"
+        },
+        {
+            "name": "pharaonic/livewire-select2",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Pharaonic/livewire-select2.git",
+                "reference": "27e66db8163c909dd9e32562012eeb437532ee9d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Pharaonic/livewire-select2/zipball/27e66db8163c909dd9e32562012eeb437532ee9d",
+                "reference": "27e66db8163c909dd9e32562012eeb437532ee9d",
+                "shasum": ""
+            },
+            "require": {
+                "livewire/livewire": ">=2.0",
+                "php": ">=7.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Pharaonic\\Livewire\\Select2\\Select2ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pharaonic\\Livewire\\Select2\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Moamen Eltouny (Raggi)",
+                    "email": "raggi@raggitech.com"
+                }
+            ],
+            "description": "Simple way to handle the Select2 for livewire components.",
+            "homepage": "https://github.com/pharaonic/livewire-select2",
+            "keywords": [
+                "laravel",
+                "livewire",
+                "livewire select",
+                "livewire select2",
+                "livewire-select2"
+            ],
+            "support": {
+                "issues": "https://github.com/Pharaonic/livewire-select2/issues",
+                "source": "https://github.com/Pharaonic/livewire-select2/tree/1.0.3"
+            },
+            "funding": [
+                {
+                    "url": "https://liberapay.com/Pharaonic",
+                    "type": "liberapay"
+                },
+                {
+                    "url": "https://www.patreon.com/Pharaonic",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2021-08-22T07:17:05+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -7269,5 +7335,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.1.0"
 }

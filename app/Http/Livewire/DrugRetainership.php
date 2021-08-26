@@ -9,7 +9,7 @@ use Livewire\Component;
 class DrugRetainership extends Component
 {
     public $templates = [];
-    public $all_drugs;
+    public $all_drugs, $selectedDrug;
     public $tables = [''];
     public $saved = false;
 
@@ -39,7 +39,7 @@ class DrugRetainership extends Component
     {
         $parts = explode(".", $key);
         if(count($parts)==2 & $parts[0]== "templates") {
-            $drug = $this->all_drugs->where('code_no', $value)->first();
+            $drug = $this->all_drugs->where('product_name', $value)->first();
 
             if ($drug) {
                 $this->tables[$parts[1]] = [
@@ -67,7 +67,7 @@ class DrugRetainership extends Component
     public function saveForm()
     {
         foreach ($this->templates as $code) {
-            $drug = $this->all_drugs->where('code_no', $code)->first();
+            $drug = $this->all_drugs->where('product_name', $code)->first();
 
             foreach ($this->tables as $prices) {
                 $drug->private_price = $prices['private'];

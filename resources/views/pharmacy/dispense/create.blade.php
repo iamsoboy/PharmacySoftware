@@ -74,7 +74,7 @@
                         @endforeach
                     </div>
                 @endif
-                @livewire('dispense-form')
+                @livewire('test-form')
             </div>
         </div>
     </div>
