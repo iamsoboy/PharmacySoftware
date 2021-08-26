@@ -31,12 +31,12 @@
                                         <option value="{{$drug->product_name}}"></option>
                                     @endforeach
                                 </datalist>
-                                {{--<select id="drugSelect" class="form-control form-control-lg" data-search="on">
-                                    <option value="">-- Select a Drug --</option>
-                                    @foreach($all_drugs as $drug)
-                                        <option value="{{$drug->code_no}}">{{$drug->product_name}}</option>
-                                    @endforeach
-                                </select>--}}
+                                {{-- <select id="drugSelect" class="form-control form-control-lg" data-search="on">
+                                     <option value="">-- Select a Drug --</option>
+                                     @foreach($all_drugs as $drug)
+                                         <option value="{{$drug->code_no}}">{{$drug->product_name}}</option>
+                                     @endforeach
+                                 </select>--}}
                             </td>
                             <td>
                                 <input type="text" wire:model="tables.{{$key}}.private">
@@ -104,4 +104,3 @@
 
     </div>
 </div><!-- .card-preview -->
-
