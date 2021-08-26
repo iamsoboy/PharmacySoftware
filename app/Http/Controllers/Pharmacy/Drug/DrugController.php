@@ -146,6 +146,10 @@ class DrugController extends Controller
             $drug->dosage = $this->getDosage($request->dose, $request->unit, $request->frequency, $request->duration, $request->time);
             $drug->unit_pack = $request->unitPack;
             $drug->quantity= $request->quantity;
+            $drug->cost_price = $request->costPrice;
+            $drug->retail_price = $request->salePrice;
+            $drug->private_price = $request->salePrice;
+            $drug->brookstone_price = $request->salePrice;
             if ($request->has('show')) {
                 $drug->status = 1;
             } else {
