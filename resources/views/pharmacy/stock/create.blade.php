@@ -88,7 +88,11 @@
                                                 <input type="text" name="sale_price[]" autocomplete="off">
                                             </td>
                                             <td>
-                                                <input type="text" class="date-picker" name="expiry_date[]" autocomplete="off">
+                                                <div class="form-group">
+                                                <div class="form-control-wrap">
+                                                <input type="text" class="form-control date-picker" name="expiry_date[]" autocomplete="off">
+                                                </div>
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach

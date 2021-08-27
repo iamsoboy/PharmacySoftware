@@ -171,17 +171,18 @@
                 @enderror
                 <!-- Dispense Section-->
                 <div class="card card-bordered">
+                    @json($inputs)
                     <table class="table table-bordered table-hover text-center table-sm" id="myTable">
                         <thead class="thead-light">
                         <tr>
-                            <th scope="col">Drug/Item Prescribed</th>
-                            <th scope="col">Dose/Regimen</th>
-                            <th scope="col">Unit Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Cost Price</th>
-                            <th scope="col">Stock</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">&nbsp;</th>
+                            <th style="width: 35%" scope="col">Drug/Item Prescribed</th>
+                            <th style="width: 15%" scope="col">Dose/Regimen</th>
+                            <th style="width: 8%" scope="col">Unit Price</th>
+                            <th style="width: 10%" scope="col">Quantity</th>
+                            <th style="width: 10%" scope="col">Cost Price</th>
+                            <th style="width: 7%" scope="col">Stock</th>
+                            <th style="width: 10%"  scope="col">Total</th>
+                            <th style="width: 5%" scope="col">&nbsp;</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -208,7 +209,7 @@
                                            wire:keyup="$emit('price', {{ $key }})">
                                 </td>
                                 <td>
-                                    <input wire:model="inputs.{{$key}}.stock" type="text" class="form-control">
+                                    <input wire:model="inputs.{{$key}}.stock" type="text" class="form-control" disabled>
                                 </td>
                                 <td>
                                      <input wire:model="inputs.{{$key}}.total" type="text" class="form-control"

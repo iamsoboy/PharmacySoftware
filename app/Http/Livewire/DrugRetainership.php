@@ -35,7 +35,7 @@ class DrugRetainership extends Component
         $this->tables = array_values($this->tables);
     }
 
-    public function updatedselectedDrug($key, $value)
+    public function updated($key, $value)
     {
         $parts = explode(".", $key);
         if(count($parts)==2 & $parts[0]== "templates") {
