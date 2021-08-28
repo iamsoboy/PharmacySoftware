@@ -223,3 +223,7 @@
         const buyOrders = @json($totalBuy);
     </script>
 @endsection
+
+@push('scripts')
+    <script src="{{asset('src/assets/js/charts/gd-default.js?ver=2.2.0')}}"></script>
+@endpush

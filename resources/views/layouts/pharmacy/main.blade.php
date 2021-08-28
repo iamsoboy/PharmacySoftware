@@ -32,7 +32,6 @@
     <script src="{{asset('src/assets/js/bundle.js?ver=2.2.0')}}"></script>
     <script src="{{asset('src/assets/js/scripts.js?ver=2.2.0')}}"></script>
     <script src="{{asset('src/assets/js/select2.min.js')}}"></script>
-    <script src="{{asset('src/assets/js/charts/gd-default.js?ver=2.2.0')}}"></script>
     <!-- END: JS Assets-->
 
     @yield('script')
