@@ -32,7 +32,7 @@ class DrugStockController extends Controller
     public function create()
     {
         $title = "stock";
-        $all_drugs = Drug::all();
+        $all_drugs = Drug::where('store_balance', 0)->get();
         $inputs = [0,1,2,3,4,5,6,7,8,9];
         return view('pharmacy.stock.create', compact('title', 'all_drugs', 'inputs'));
     }
@@ -45,14 +45,18 @@ class DrugStockController extends Controller
      */
     public function store(Request $request)
     {
+
         $user = Auth::user();
         $this->validateRequest();
 
-        //dd($request->all());
+
         $ref = $this->genRef();
 
             foreach ($request['name'] as $key => $value) {
-                $drugName = Drug::where('code_no', $value)->firstOrFail();
+                $drugName = Drug::where('code_no', $value)->first();
+
+                if($drugName) {
+
                 $stock = DrugStock::create([
                     'stock_reference' => $ref,
                     'code_no' => $drugName->code_no,
@@ -63,13 +67,17 @@ class DrugStockController extends Controller
                     'expiry_date' => $request['expiry_date'][$key],
                     'submitted_by' => $user->name, //"Staff Name"
                 ]);
-                $drugName->store_balance = $drugName->store_balance + $request['quantity'][$key];
-                $drugName->expiry_date = $request['expiry_date'][$key];
-                $drugName->cost_price = $request['cost_price'][$key];
-                $drugName->retail_price = $request['sale_price'][$key];
-                $drugName->private_price = $request['sale_price'][$key];
-                $drugName->arrival_date = now();
-                $drugName->save();
+
+                    $drugName->store_balance = $drugName->store_balance + $request['quantity'][$key];
+                    $drugName->expiry_date = $request['expiry_date'][$key];
+                    $drugName->cost_price = $request['cost_price'][$key];
+                    $drugName->retail_price = $request['sale_price'][$key];
+                    $drugName->private_price = $request['sale_price'][$key];
+                    $drugName->arrival_date = now();
+                    $drugName->save();
+                } else {
+                    return back()->with('success_message', 'Drug Stock saved and drug(s) updated successfully.');
+                }
             }
 
 
@@ -126,9 +134,9 @@ class DrugStockController extends Controller
         $drugName = Drug::where('code_no', $drugStock->code_no)->firstOrFail();
         $drugName->store_balance = $drugName->store_balance - $drugStock->quantity;
         $drugName->expiry_date = now();
-        $drugName->cost_price = 0;
-        $drugName->retail_price = 0;
-        $drugName->private_price = 0;
+        //$drugName->cost_price = 0;
+        //$drugName->retail_price = 0;
+        //$drugName->private_price = 0;
         $drugName->arrival_date = null;
         $drugName->save();
 

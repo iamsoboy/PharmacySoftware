@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Pharmacy\Dispense;
 use App\Models\Pharmacy\Drug;
+use App\Models\Pharmacy\Prescription;
 use App\Models\Retainership;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -43,7 +45,7 @@ class TestForm extends Component
             [$value, '!=', 0]
         ])->get();
 
-        $this->dispatchBrowserEvent('tariff-updated', ['newName' => $this->all_drugs]);
+        //$this->dispatchBrowserEvent('tariff-updated', ['newName' => $this->all_drugs]);
         //dd($value, $this->all_drugs);
 
         $this->drugMessage = false;
@@ -124,23 +126,66 @@ class TestForm extends Component
             'otherName' => 'required|string',
             'gender' => 'required|string',
             'consultant' => 'required|string',
-            'inputs.*.name' => 'required|array',
-            'inputs.*.dosage' => 'required|array',
-            'inputs.*.unitPrice' => 'required|array',
-            'inputs.*.qty' => 'required|array',
-            'inputs.*.price' => 'required|array',
-            'inputs.*.total' => 'required|array',
-            'inputs.*.stock' => 'required|array',
+            'inputs.*.name' => 'required|string',
+            'inputs.*.dosage' => 'required|string',
+            'inputs.*.unitPrice' => 'required|numeric',
+            'inputs.*.qty' => 'required|numeric',
+            'inputs.*.price' => 'required|numeric',
+            'inputs.*.total' => 'required|numeric',
+            'inputs.*.stock' => 'required',
         ],
             [
                 'surname.required' => 'Surname field is required',
-                'otherName.required' => 'Othernames field is required',
+                'otherName.required' => 'Other names field is required',
                 'gender.required' => 'Gender field is required',
                 'consultant.required' => 'Consultant field is required',
-                'inputs.*.required' => 'All drugs field(s) is required',
+                'inputs.*.name.required' => 'Drug name field is required',
+                'inputs.*.dosage.required' => 'Drug dosage is required',
+                'inputs.*.unitPrice.required' => 'Cost price is required',
+                'inputs.*.qty.required' => 'Drug quantity field is required',
+                'inputs.*.price.required' => 'Drug selling price is required',
+                'inputs.*.total.required' => 'Drug total selling cost is required',
+                'inputs.*.stock.required' => 'Drug is required',
             ]
         );
-        dd($this->inputs, $user);
+
+        $dispense = Dispense::create([
+            'prescription_no' => $this->generatePharmacyNumber(),
+            'hospital_no' => $this->hospitalNo ?? "Walk-In Patient",
+            'prescription_date' => now(),
+            'surname' => $this->surname,
+            'other_names' => $this->otherName,
+            'age' => $this->age,
+            'phone' => $this->phone,
+            'gender' => $this->gender,
+            'retainership' => $this->selectedTariff,
+            'ward_clinic' => $this->clinic,
+            'consultant' => $this->consultant,
+            'dispensed_by' => $user->name,
+
+        ]);
+
+        foreach ($this->inputs as $key => $item) {
+
+            //dd($dispense, $dispense->id);
+            Prescription::create([
+                'dispense_id' => $dispense->id,
+                'code_no' => $item['code_no'],
+                'drug_name' => $item['name'],
+                'cost_price' => $item['unitPrice'],
+                'sale_price' => $item['price'],
+                'dosage_regimen' => $item['dosage'],
+                'quantity_prescribed' => $item['qty'],
+                'subtotal_prescribed' => $item['total'],
+            ]);
+
+            $drug = Drug::where('id', $item['code_no'])->first();
+            $drug->store_balance =  ($drug->store_balance - $item['qty']);
+            $drug->save();
+
+        }
+        $this->message = true;
+        $this->inputs = [];
     }
 
     private function generatePharmacyNumber()

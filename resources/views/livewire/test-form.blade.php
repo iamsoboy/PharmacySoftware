@@ -15,72 +15,57 @@
                                 <div class="form-group mb-4">
                                     <div class="form-control-wrap">
                                         <div class="form-control-select">
-                                            <select wire:model="selectedTariff" class="custom-select form-control-outlined" id="retainership" name="retainership">
+                                            <select wire:model="selectedTariff" class="custom-select form-control" id="retainership" name="retainership">
                                                 @foreach($retainerships as $retainership)
                                                     <option value="{{$retainership->name_price}}">{{$retainership->name}} Tariff</option>
                                                 @endforeach
                                             </select>
-                                            <!--<label class="form-label-outlined" for="retainership">Retainership</label>-->
+                                            <!--<label class="form-label" for="retainership">Retainership</label>-->
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-xxl-12">
                                 <div class="form-group">
+                                    <label class="form-label" for="surname">Surname</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control form-control-outlined @error('surname') error @enderror" wire:model="surname">
-                                        <label class="form-label-outlined" for="surname">Surname</label>
-                                        @error('surname')
-                                        <span id="fv-full-name-error" class="invalid">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                        <input type="text" class="form-control @error('surname') error @enderror" wire:model="surname">
                                     </div>
 
                                 </div>
 
                                 <div class="form-group">
+                                    <label class="form-label" for="otherName">Other Names</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control form-control-outlined @error('otherName') error @enderror" wire:model="otherName" id="otherName">
-                                        <label class="form-label-outlined" for="otherName">Other Names</label>
-                                        @error('otherName')
-                                        <span id="fv-full-name-error" class="invalid">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                        <input type="text" class="form-control @error('otherName') error @enderror" wire:model="otherName" id="otherName">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-xxl-12">
                                 <div class="justify-between">
                                     <div class="form-group">
+                                        <label class="form-label" for="age">Age</label>
                                         <div class="form-control-wrap">
-                                            <input type="text" class="form-control form-control-outlined" wire:model="age" id="age">
-                                            <label class="form-label-outlined" for="age">Age</label>
+                                            <input type="text" class="form-control" wire:model="age" id="age">
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label class="form-label" for="gender">Gender</label>
                                         <div class="form-control-wrap">
                                             <div class="form-control-select">
-                                                <select class="custom-select form-control-outlined @error('gender') error @enderror" id="gender" wire:model="gender">
+                                                <select class="custom-select @error('gender') error @enderror" id="gender" wire:model="gender">
                                                     <option value=""></option>
                                                     <option value="female">Female</option>
                                                     <option value="male">Male</option>
                                                 </select>
-                                                <label class="form-label-outlined" for="gender">Gender</label>
-                                                @error('gender')
-                                                <span id="fv-topics-error" class="invalid">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="form-label" for="phone">Phone</label>
                                     <div class="form-control-wrap">
-                                        <input type="text" class="form-control form-control-outlined" wire:model="phone" id="phone">
-                                        <label class="form-label-outlined" for="phone">Phone</label>
+                                        <input type="text" class="form-control" wire:model="phone" id="phone">
                                     </div>
                                 </div>
                             </div>
@@ -91,32 +76,27 @@
             <div class="col-lg-4 col-md-4">
                 <div class="nk-order-ovwg-data sell">
                     <div class="form-group">
+                        <label class="form-label" for="hospitalNo">Hospital No.</label>
                         <div class="form-control-wrap">
-                            <input type="text" class="form-control form-control-outlined" wire:model="hospitalNo" id="hospitalNo">
-                            <label class="form-label-outlined" for="hospitalNo">Hospital No.</label>
+                            <input type="text" class="form-control" wire:model="hospitalNo" id="hospitalNo">
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="form-label" for="pharmacyNo">Pharmacy No.</label>
                         <div class="form-control-wrap">
-                            <input type="text" class="form-control form-control-outlined" wire:model="pharmacyNo" id="pharmacyNo">
-                            <label class="form-label-outlined" for="hospitalNo">Pharmacy No.</label>
+                            <input type="text" class="form-control " wire:model="pharmacyNo" id="pharmacyNo">
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="form-label" for="clinic">Ward/Clinic</label>
                         <div class="form-control-wrap">
-                            <input type="text" class="form-control form-control-outlined" wire:model="clinic" id="clinic">
-                            <label class="form-label-outlined" for="clinic">Ward/Clinic</label>
+                            <input type="text" class="form-control" wire:model="clinic" id="clinic">
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="form-label" for="consultant">Consultant</label>
                         <div class="form-control-wrap">
-                            <input type="text" class="form-control form-control-outlined @error('consultant') error @enderror" wire:model="consultant" id="consultant">
-                            <label class="form-label-outlined" for="consultant">Consultant</label>
-                            @error('consultant')
-                            <span id="fv-full-name-error" class="invalid">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input type="text" class="form-control @error('consultant') error @enderror" wire:model="consultant" id="consultant">
                         </div>
                     </div>
                 </div>
@@ -169,9 +149,17 @@
                         <strong>{{ $message }}</strong>
                     </div>
                 @enderror
+                    @if ($errors->any())
+                        <div class="alert alert-icon alert-danger" role="alert">
+                            @foreach ($errors->all() as $error)
+                                <em class="icon ni ni-cross-circle"></em>
+                                <strong>{{ $error }}</strong> <br>
+                            @endforeach
+                        </div>
+                    @endif
                 <!-- Dispense Section-->
                 <div class="card card-bordered">
-                    @json($inputs)
+
                     <table class="table table-bordered table-hover text-center table-sm" id="myTable">
                         <thead class="thead-light">
                         <tr>
@@ -201,8 +189,8 @@
                                     <input wire:model="inputs.{{$key}}.unitPrice" type="text" class="form-control">
                                 </td>
                                 <td>
-                                    <input wire:model="inputs.{{$key}}.qty" type="text" class="form-control"
-                                           wire:keyup="$emit('qty', {{ $key }})">
+                                    <input wire:model.debounce.1000ms="inputs.{{$key}}.qty" type="text" class="form-control"
+                                           wire:keyup.debounce.1000ms="$emit('qty', {{ $key }})">
                                 </td>
                                 <td>
                                     <input wire:model="inputs.{{$key}}.price" type="text" class="form-control"

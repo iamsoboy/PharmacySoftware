@@ -1,5 +1,9 @@
 @extends('layouts.pharmacy.main')
 
+@section('head')
+    <title>Drugs & HMO Management</title>
+@endsection
+
 @section('customCss')
     <style type="text/css">
         table td {
@@ -20,10 +24,6 @@
             box-sizing: border-box;
         }
     </style>
-@endsection
-
-@section('head')
-    <title>Drugs & HMO Management</title>
 @endsection
 
 @section('content')
@@ -88,11 +88,9 @@
                                                 <input type="text" name="sale_price[]" autocomplete="off">
                                             </td>
                                             <td>
-                                                <div class="form-group">
-                                                <div class="form-control-wrap">
-                                                <input type="text" class="form-control date-picker" name="expiry_date[]" autocomplete="off">
-                                                </div>
-                                                </div>
+
+                                                    <input type="text" class="form-control" name="expiry_date[]" autocomplete="off">
+
                                             </td>
                                         </tr>
                                         @endforeach

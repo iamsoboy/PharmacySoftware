@@ -13,9 +13,15 @@
             <div class="nk-content-inner">
                 <div class="nk-content-body">
                     <div class="nk-block-head">
+                        @if (session()->has('success_message'))
+                            <div class="alert alert-icon alert-success mt-2" role="alert">
+                                <em class="icon ni ni-check-circle"></em>
+                                <strong>{{session()->get('success_message')}}</strong>
+                            </div>
+                        @endif
                         <div class="nk-block-between g-3">
                             <div class="nk-block-head-content">
-                                <h3 class="nk-block-title page-title">Prescription No <strong class="text-primary small">{{$dispense->prescription_no}}</strong></h3>
+                                <h3 class="nk-block-title page-title">Prescription No.: <strong class="text-primary small">{{$dispense->prescription_no}}</strong></h3>
                                 <div class="nk-block-des text-soft">
                                     <ul class="list-inline">
                                         <li>Created At: <span class="text-base">{{\Carbon\Carbon::parse($dispense->prescription_date)->format('F j, Y, g:i a')  }}</span></li>
@@ -31,11 +37,11 @@
                     <div class="nk-block">
                         <div class="invoice">
                             <div class="invoice-action">
-                                <a class="btn btn-icon btn-lg btn-white btn-dim btn-outline-primary" href="html/invoice-print.html" target="_blank"><em class="icon ni ni-printer-fill"></em></a>
+                                <a class="btn btn-icon btn-lg btn-white btn-dim btn-outline-primary" href="#" target="_blank"><em class="icon ni ni-printer-fill"></em></a>
                             </div><!-- .invoice-actions -->
                             <div class="invoice-wrap">
                                 <div class="invoice-brand text-center">
-                                    <img src="{{asset('src/images/logo-dark.png')}}" srcset="{{asset('src/images/logo2x.png')}} 2x" alt="">
+                                    <img src="{{asset('src/images/logo-dark.png')}}" srcset="{{asset('src/images/logo2x.png')}} 4x" alt="">
                                 </div>
                                 <div class="invoice-head">
                                     <div class="invoice-contact">

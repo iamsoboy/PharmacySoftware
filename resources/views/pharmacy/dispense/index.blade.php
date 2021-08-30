@@ -75,19 +75,27 @@
                                             </td>
                                             <td class="nk-tb-col nk-tb-col-tools">
                                                 <ul class="nk-tb-actions gx-1">
-                                                    <li>
-                                                        <a href="{{route('pharmacy.dispense.prescriptions', $item->id)}}"><em class="icon ni ni-eye"></em><span></span></a>
-                                                    </li>
                                                     <li class="nk-tb-action">
-                                                        <form action="{{route('pharmacy.dispense.destroy', $item->id)}}" method="post">
-                                                            @method('delete')
-                                                            @csrf
-                                                        <button class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                            <em class="icon ni ni-trash"></em>
-                                                        </button>
-                                                        </form>
+                                                        <a href="{{route('pharmacy.dispense.prescriptions', $item->id)}}" class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top" title="View Details">
+                                                            <em class="icon ni ni-eye"></em>
+                                                        </a>
                                                     </li>
-
+                                                    <li>
+                                                        <div class="drodown">
+                                                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <form id="delete-dispense" method="POST" action="{{route('pharmacy.dispense.destroy', $item->id)}}">
+                                                                        @method('delete')
+                                                                        @csrf
+                                                                    </form>
+                                                                    <li><a onclick="event.preventDefault(); document.getElementById('delete-dispense').submit();">
+                                                                            <em class="icon ni ni-trash"></em><span>Delete</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
                                                 </ul>
                                             </td>
                                         </tr>

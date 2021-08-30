@@ -16,7 +16,8 @@ class DispenseController extends Controller
 {
     public function index()
     {
-        $dispenses = Dispense::with('prescriptions')->get();
+        $dispenses = Dispense::with('prescriptions')->orderBy('id', 'asc')->get();
+        //dd($dispenses);
         return view('pharmacy.dispense.index', compact('dispenses'));
     }
     /**
@@ -129,7 +130,6 @@ class DispenseController extends Controller
      */
     public function destroy(Dispense $dispense)
     {
-
         $user = Auth::user();
         $dispense->canceled_by = $user->name;
         $dispense->returned_by = $user->name;
@@ -139,12 +139,15 @@ class DispenseController extends Controller
 
         $getDispensedDrug = $dispense->prescriptions()->get();
 
-        foreach ($getDispensedDrug as $item)
-        {
-            $drug = Drug::where('code_no', $item->code_no)->firstOrFail();
-            $drug->store_balance = $drug->store_balance + $item->quantity_prescribed;
-            $drug->save();
+        if ($getDispensedDrug) {
+            foreach ($getDispensedDrug as $item)
+            {
+                $drug = Drug::where('id', $item->code_no)->firstOrFail();
+                $drug->store_balance = $drug->store_balance + $item->quantity_prescribed;
+                $drug->save();
+            }
         }
+
         $dispense->delete();
 
         return back()->with('success_message', 'Prescription(s) successfully deleted and returned to shelf.');
@@ -156,13 +159,14 @@ class DispenseController extends Controller
         $prescription->canceled_by = $user->name;
         $prescription->save();
 
-        $drug = Drug::where('code_no', $prescription->code_no)->firstOrFail();
+
+        $drug = Drug::where('id', $prescription->code_no)->firstOrFail();
         $drug->store_balance = $drug->store_balance + $prescription->quantity_prescribed;
         $drug->save();
 
         $prescription->delete();
 
-        return back()->with('success_message', 'Drug successfully deleted and returned to shelf.');
+        return back()->with('success_message', 'Drug prescription was successfully deleted and returned to shelf.');
 
     }
 

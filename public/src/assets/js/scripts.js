@@ -551,7 +551,7 @@
     NioApp.DataTable.init = function () {
         NioApp.DataTable('.datatable-init', {
             responsive: {
-                details: true
+                details: true,
             }
         });
         $.fn.DataTable.ext.pager.numbers_length = 7;
@@ -592,7 +592,10 @@
 
     // Picker Init @v1.0
     NioApp.Picker.init = function() {
-        NioApp.Picker.date('.date-picker');
+        NioApp.Picker.date('.date-picker', {
+            format: "yyyy/mm/dd",
+            orientation: "bottom right"
+        });
         NioApp.Picker.dob('.date-picker-alt');
         NioApp.Picker.time('.time-picker');
     };
