@@ -13,13 +13,8 @@
                     </div>
                 </div>
 
-                @if (session()->has('success_message'))
-                    <div class="alert alert-fill alert-icon alert-primary mt-4" role="alert">
-                        <em class="icon ni ni-alert-circle"></em>
-                        <strong>{{session()->get('success_message')}}</strong>.
-                    </div>
-                @elseif(session()->has('status'))
-                    <div class="alert alert-fill alert-icon alert-warning mt-4" role="alert">
+                @if(session()->has('status'))
+                    <div class="alert alert-fill alert-icon alert-danger mt-4" role="alert">
                         <em class="icon ni ni-alert-circle"></em>
                         <strong>{{session()->get('status')}}</strong>.
                     </div>

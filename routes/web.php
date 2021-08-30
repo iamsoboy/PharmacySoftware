@@ -26,7 +26,7 @@ Route::get('/', 'Auth\AuthenticatedSessionController@create');
 
 require __DIR__.'/auth.php';
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'userban'])->group(function () {
 
 
 Route::get('retainership-create', 'RetainershipController@create')->name('retainership.create');
