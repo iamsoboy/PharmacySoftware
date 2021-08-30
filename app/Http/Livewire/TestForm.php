@@ -29,7 +29,8 @@ class TestForm extends Component
     {
         $this->all_drugs = Drug::where([
             ['private_price', '!=', null],
-            ['private_price', '!=', 0]
+            ['private_price', '!=', 0],
+            ['status', 1]
         ])->get();
     }
     public function render()
@@ -42,7 +43,8 @@ class TestForm extends Component
     {
         $this->all_drugs = Drug::where([
             [$value, '!=', null],
-            [$value, '!=', 0]
+            [$value, '!=', 0],
+            ['status', 1]
         ])->get();
 
         //$this->dispatchBrowserEvent('tariff-updated', ['newName' => $this->all_drugs]);
@@ -184,13 +186,26 @@ class TestForm extends Component
             $drug->save();
 
         }
-        $this->message = true;
         $this->inputs = [];
+        $this->resetInputFields();
+        session()->flash('success_message', 'Drug(s) Has Been Dispensed Successfully.');
     }
 
     private function generatePharmacyNumber()
     {
         $random = strtoupper(Str::random(5));
         return $value = "HBMC/PHM/".$random;
+    }
+
+    private function resetInputFields(){
+        $this->surname = '';
+        $this->otherName = '';
+        $this->age = '';
+        $this->gender = '';
+        $this->phone = '';
+        $this->hospitalNo = '';
+        $this->pharmacyNo = '';
+        $this->clinic = '';
+        $this->consultant = '';
     }
 }

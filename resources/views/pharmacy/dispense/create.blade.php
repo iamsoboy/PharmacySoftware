@@ -60,20 +60,7 @@
                         </div><!-- .nk-block-head-content -->
                     </div><!-- .nk-block-between -->
                 </div><!-- .nk-block-head -->
-                @if (session()->has('success_message'))
-                    <div class="alert alert-icon alert-success" role="alert">
-                        <em class="icon ni ni-check-circle"></em>
-                        <strong>{{session()->get('success_message')}}</strong>
-                    </div>
-                @endif
-                @if ($errors->any())
-                    <div class="alert alert-icon alert-danger" role="alert">
-                        @foreach ($errors->all() as $error)
-                            <em class="icon ni ni-cross-circle"></em>
-                            <strong>{{ $error }}</strong> <br>
-                        @endforeach
-                    </div>
-                @endif
+
                 @livewire('test-form')
             </div>
         </div>

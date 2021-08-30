@@ -132,23 +132,18 @@
         </div>
 
             <div class="col-12">
-                @if ($message)
-                    <div class="alert alert-icon alert-warning" role="alert">
+                @if (session()->has('success_message'))
+                    <div class="alert alert-icon alert-success" role="alert">
                         <em class="icon ni ni-check-circle"></em>
-                        <strong>This drug has been prescribed already!</strong>
+                        <strong>{{session()->get('success_message')}}</strong>
                     </div>
-                @elseif ($drugMessage)
+                @endif
+                @if ($drugMessage)
                     <div class="alert alert-icon alert-warning" role="alert">
                         <em class="icon ni ni-check-circle"></em>
                         <strong>Oops, Sorry this drug is not in the Tariff!</strong>
                     </div>
                 @endif
-                @error('inputs')
-                    <div class="alert alert-icon alert-danger" role="alert">
-                        <em class="icon ni ni-check-circle"></em>
-                        <strong>{{ $message }}</strong>
-                    </div>
-                @enderror
                     @if ($errors->any())
                         <div class="alert alert-icon alert-danger" role="alert">
                             @foreach ($errors->all() as $error)
