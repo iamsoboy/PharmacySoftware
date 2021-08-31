@@ -20,8 +20,9 @@ Route::get('/', function () {
 
 Route::get('/', 'Auth\AuthenticatedSessionController@create');
 
+
 //Route::get('/dashboard', function () {
- //   return view('dashboard');
+ //   return view('dashboard'); Route::get('axa', 'CartController@axa');
 //})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

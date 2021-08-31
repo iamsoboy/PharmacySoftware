@@ -32,7 +32,7 @@ class DrugStockController extends Controller
     public function create()
     {
         $title = "stock";
-        $all_drugs = Drug::where('store_balance', 0)->get();
+        $all_drugs = Drug::all();//where('store_balance', 0)->get();
         $inputs = [0,1,2,3,4,5,6,7,8,9];
         return view('pharmacy.stock.create', compact('title', 'all_drugs', 'inputs'));
     }

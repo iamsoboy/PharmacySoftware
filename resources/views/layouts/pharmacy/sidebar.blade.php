@@ -49,9 +49,11 @@
                                 <span class="nk-menu-text">Drug(s)</span>
                             </a>
                             <ul class="nk-menu-sub">
+                                @can('user-create')
                                 <li class="nk-menu-item">
                                     <a href="{{route('pharmacy.drugs.create')}}" class="nk-menu-link"><span class="nk-menu-text">Add New Drug(s)</span></a>
                                 </li>
+                                @endcan
                                 <li class="nk-menu-item">
                                     <a href="{{route('pharmacy.drugs.index')}}" class="nk-menu-link"><span class="nk-menu-text">Drug List(s)</span></a>
                                 </li>
@@ -129,6 +131,7 @@
                                 </li>
                             </ul><!-- .nk-menu-sub -->
                         </li><!-- .nk-menu-item -->
+                        @can('user-create')
                         <li class="nk-menu-heading">
                             <h6 class="overline-title text-primary-alt">Administrator</h6>
                         </li><!-- .nk-menu-heading -->
@@ -152,6 +155,7 @@
                                 </li>
                             </ul><!-- .nk-menu-sub -->
                         </li><!-- .nk-menu-item -->
+                        @endcan
                     </ul><!-- .nk-menu -->
                 </div><!-- .nk-sidebar-menu -->
                 <div class="nk-sidebar-footer">
