@@ -20,7 +20,7 @@ class DrugStockController extends Controller
      */
     public function index()
     {
-        $stocks = DrugStock::all();
+        $stocks = DrugStock::where('status', 1)->get();
         return view('pharmacy.stock.index', compact('stocks'));
     }
 
@@ -32,7 +32,7 @@ class DrugStockController extends Controller
     public function create()
     {
         $title = "stock";
-        $all_drugs = Drug::all();//where('store_balance', 0)->get();
+        $all_drugs = Drug::where('status', 1)->get();//where('store_balance', 0)->get();
         $inputs = [0,1,2,3,4,5,6,7,8,9];
         return view('pharmacy.stock.create', compact('title', 'all_drugs', 'inputs'));
     }

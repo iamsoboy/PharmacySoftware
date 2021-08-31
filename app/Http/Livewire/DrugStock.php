@@ -14,7 +14,7 @@ class DrugStock extends Component
 
     public function render()
     {
-        $all_drugs = Drug::all();
+        $all_drugs = Drug::where('status', 1)->get();
         return view('livewire.drug-stock', compact('all_drugs'));
     }
 
